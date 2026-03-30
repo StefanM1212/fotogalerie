@@ -2,40 +2,52 @@
 
 
 
-
-
-
 const overlay = document.getElementById('overlay'); 
 const overlayBild = document.getElementById('overlay-bild'); // Exakt wie im HTML!
-const bilder = [
-    'bild1.jpg', 'Bild2.jpg', 'Bild3.jpg', 'Bild4.jpg', 
-    'Bild5.jpg', 'Bild6.jpg', 'Bild7.jpg', 'bild8.jpg', 
-    'Bild9.jpg', 'Bild10.jpg', 'Bild11.jpg', 'Bild12.jpg'
-];
+
+
+const galeriebilder = document.querySelectorAll('.foto-bild');
+const bilder = Array.from(galeriebilder).map(img => img.src);
+
+const fotoButtons = document.querySelectorAll('.foto-button');
+
+fotoButtons.forEach(function(button, index) {
+    button.addEventListener('click', function() {
+        openOverlay(index);
+    });
+});
+
+
 let aktuellerIndex = 0;
 
 function openOverlay(index) {
     aktuellerIndex = index;
     overlayBild.src = bilder[index];
-    overlay.style.display = 'flex';
     overlay.classList.add('aktiv');
 }
 
+
+overlay.addEventListener('click', schliesseOverlay);
+
 function schliesseOverlay() {
-    overlay.style.display = 'none';
     overlay.classList.remove('aktiv');
 }
 
+document.querySelector('.overlay-background').addEventListener('click', schliesseOverlay);
 
 
 
-
-function naechstesBild() {
-    aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
-    overlayBild.src = bilder[aktuellerIndex];
-}
+document.querySelector('.nav-pfeil-links').addEventListener('click', vorherigesBild);
+document.querySelector('.nav-pfeil-rechts').addEventListener('click', naechstesBild);
 
 function vorherigesBild() {
     aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
+    event.stopPropagation(); // Verhindert, dass der Klick das Overlay schließt
+    overlayBild.src = bilder[aktuellerIndex];
+}
+
+function naechstesBild() {
+    aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
+     event.stopPropagation();
     overlayBild.src = bilder[aktuellerIndex];
 }

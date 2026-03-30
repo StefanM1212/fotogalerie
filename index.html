@@ -18,23 +18,23 @@
 
     <section class="fotos-bereich">
         
-<div class="fotos-reihe fotos-reihe-oben">
-  <figure class="foto-karte foto-karte-0"><img class="foto-bild" src="bild1.jpg"  alt="Bild 1"  onclick="openOverlay(0)"></figure>
-  <figure class="foto-karte foto-karte-1"><img class="foto-bild" src="Bild2.jpg"  alt="Bild 2"  onclick="openOverlay(1)"></figure>
-  <figure class="foto-karte foto-karte-2"><img class="foto-bild" src="Bild3.jpg"  alt="Bild 3"  onclick="openOverlay(2)"></figure>
-  <figure class="foto-karte foto-karte-3"><img class="foto-bild" src="Bild4.jpg"  alt="Bild 4"  onclick="openOverlay(3)"></figure>
-  <figure class="foto-karte foto-karte-4"><img class="foto-bild" src="Bild5.jpg"  alt="Bild 5"  onclick="openOverlay(4)"></figure>
-  <figure class="foto-karte foto-karte-5"><img class="foto-bild" src="Bild6.jpg"  alt="Bild 6"  onclick="openOverlay(5)"></figure>
-  <figure class="foto-karte foto-karte-6"><img class="foto-bild" src="Bild7.jpg"  alt="Bild 7"  onclick="openOverlay(6)"></figure>
-</div>
+<ul class="fotos-reihe fotos-reihe-oben">
+  <li class="foto-karte foto-karte-0"><button class="foto-button"><img class="foto-bild" src="bild1.jpg" alt="Bild 1"></button></li>
+  <li class="foto-karte foto-karte-1"><button class="foto-button"><img class="foto-bild" src="Bild2.jpg" alt="Bild 2"></button></li>
+  <li class="foto-karte foto-karte-2"><button class="foto-button"><img class="foto-bild" src="Bild3.jpg" alt="Bild 3"></button></li>
+  <li class="foto-karte foto-karte-3"><button class="foto-button"><img class="foto-bild" src="Bild4.jpg" alt="Bild 4"></button></li>
+  <li class="foto-karte foto-karte-4"><button class="foto-button"><img class="foto-bild" src="Bild5.jpg" alt="Bild 5"></button></li>
+  <li class="foto-karte foto-karte-5"><button class="foto-button"><img class="foto-bild" src="Bild6.jpg" alt="Bild 6"></button></li>
+  <li class="foto-karte foto-karte-6"><button class="foto-button"><img class="foto-bild" src="Bild7.jpg" alt="Bild 7"></button></li>
+</ul>
 
-<div class="fotos-reihe fotos-reihe-unten">
-  <figure class="foto-karte foto-karte-7"><img class="foto-bild" src="bild8.jpg"  alt="Bild 8"  onclick="openOverlay(7)"></figure>
-  <figure class="foto-karte foto-karte-8"><img class="foto-bild" src="Bild9.jpg"  alt="Bild 9"  onclick="openOverlay(8)"></figure>
-  <figure class="foto-karte foto-karte-9"><img class="foto-bild" src="Bild10.jpg" alt="Bild 10" onclick="openOverlay(9)"></figure>
-  <figure class="foto-karte foto-karte-10"><img class="foto-bild" src="Bild11.jpg" alt="Bild 11" onclick="openOverlay(10)"></figure>
-  <figure class="foto-karte foto-karte-11"><img class="foto-bild" src="Bild12.jpg" alt="Bild 12" onclick="openOverlay(11)"></figure>
-</div>
+<ul class="fotos-reihe fotos-reihe-unten">
+  <li class="foto-karte foto-karte-7"><button class="foto-button"><img class="foto-bild" src="bild8.jpg" alt="Bild 8"></button></li>
+  <li class="foto-karte foto-karte-8"><button class="foto-button"><img class="foto-bild" src="Bild9.jpg" alt="Bild 9"></button></li>
+  <li class="foto-karte foto-karte-9"><button class="foto-button"><img class="foto-bild" src="Bild10.jpg" alt="Bild 10"></button></li>
+  <li class="foto-karte foto-karte-10"><button class="foto-button"><img class="foto-bild" src="Bild11.jpg" alt="Bild 11"></button></li>
+  <li class="foto-karte foto-karte-11"><button class="foto-button"><img class="foto-bild" src="Bild12.jpg" alt="Bild 12"></button></li>
+</ul>
 
 
     </section>
@@ -48,14 +48,14 @@
   <!-- Overlay / Lightbox -->
 <div class="overlay" id="overlay">
 
-    <div class="overlay-background" onclick="schliesseOverlay()"></div>
+    <div class="overlay-background"></div>
 
     <img class="overlay-bild" id="overlay-bild" src="" alt="">
 
-    <div class="nav-pfeil links" onclick="vorherigesBild()">&#10094;</div>
-    <div class="nav-pfeil rechts" onclick="naechstesBild()">&#10095;</div>
+   <div class="nav-pfeil-links">&#10094;</div>
+<div class="nav-pfeil-rechts">&#10095;</div>
 
-    <div class="overlay-schliessen" onclick="schliesseOverlay()">&#10006;</div>
+    <div class="overlay-schliessen">&#10006;</div>
 </div>
 
 </body>
