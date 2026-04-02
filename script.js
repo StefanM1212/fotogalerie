@@ -2,21 +2,22 @@
 
 
 
-const overlay = document.getElementById('overlay'); 
+
+const overlay = document.getElementById('overlay');
 const overlayBild = document.getElementById('overlay-bild'); // Exakt wie im HTML!
 
 
-const galeriebilder = document.querySelectorAll('.foto-bild');
+const galeriebilder = document.querySelectorAll('.photo-image');
 const bilder = Array.from(galeriebilder).map(img => img.src);
 
-const fotoButtons = document.querySelectorAll('.foto-button');
+const fotoButtons = document.querySelectorAll('.photo-button');
 
-const photocard = document.querySelectorAll('.foto-karte');
+const photocard = document.querySelectorAll('.photo-card');
 
-const aktuelleKarte = document.querySelector('.foto-karte.aktiv');
+const aktuelleKarte = document.querySelector('.photo-card.active');
 
-const leftArrow = document.querySelector('.nav-pfeil-links');
-const rightArrow = document.querySelector('.nav-pfeil-rechts');
+const leftArrow = document.querySelector('.nav-arrow-left');
+const rightArrow = document.querySelector('.nav-arrow-right');
 
 
 
@@ -33,22 +34,22 @@ let aktuellerIndex = 0;
 function openOverlay(index) {
     aktuellerIndex = index;
     overlayBild.src = bilder[index];
-    overlay.classList.add('aktiv');
+    overlay.classList.add('active');
 }
 
 
 overlay.addEventListener('click', schliesseOverlay);
 
 function schliesseOverlay() {
-    overlay.classList.remove('aktiv');
+    overlay.classList.remove('active');
 }
 
 document.querySelector('.overlay-background').addEventListener('click', schliesseOverlay);
 
 
 
-document.querySelector('.nav-pfeil-links').addEventListener('click', vorherigesBild);
-document.querySelector('.nav-pfeil-rechts').addEventListener('click', naechstesBild);
+document.querySelector('.nav-arrow-left').addEventListener('click', vorherigesBild);
+document.querySelector('.nav-arrow-right').addEventListener('click', naechstesBild);
 
 function vorherigesBild() {
     aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
@@ -64,18 +65,18 @@ function naechstesBild() {
 
 
 document.addEventListener('keydown', function(event) {
-    if (overlay.classList.contains('aktiv')) {
+    if (overlay.classList.contains('active')) {
         // Overlay ist offen → Bild wechseln
-        if (event.key === 'ArrowLeft') {vorherigesBild(); leftArrow.classList.add('pressed'); 
- 
+        if (event.key === 'ArrowLeft') {vorherigesBild(); leftArrow.classList.add('pressed');
+
             setTimeout(function() {
         leftArrow.classList.remove('pressed');
     }, 300);
          }
-        
-        
-        
-         if (event.key === 'ArrowRight') {naechstesBild(); rightArrow.classList.add('pressed'); 
+
+
+
+         if (event.key === 'ArrowRight') {naechstesBild(); rightArrow.classList.add('pressed');
 
 setTimeout(function() {
         rightArrow.classList.remove('pressed');
@@ -84,10 +85,9 @@ setTimeout(function() {
 
 
 
-
          }
 
-    
+
     }
     else {
         // Overlay ist geschlossen → Rahmen bewegen
@@ -101,28 +101,27 @@ setTimeout(function() {
 
 
 
-
 function aktivesKartePlus() {
-    const aktuelleKarte = document.querySelector('.foto-karte.aktiv');
-    if (aktuelleKarte) aktuelleKarte.classList.remove('aktiv');
-    
+    const aktuelleKarte = document.querySelector('.photo-card.active');
+    if (aktuelleKarte) aktuelleKarte.classList.remove('active');
+
     aktuellerIndex = (aktuellerIndex + 1) % photocard.length;
-    photocard[aktuellerIndex].classList.add('aktiv');
+    photocard[aktuellerIndex].classList.add('active');
 }
 
 function aktivesKarteMinus() {
-    const aktuelleKarte = document.querySelector('.foto-karte.aktiv');
-    if (aktuelleKarte) aktuelleKarte.classList.remove('aktiv');
-    
+    const aktuelleKarte = document.querySelector('.photo-card.active');
+    if (aktuelleKarte) aktuelleKarte.classList.remove('active');
+
     aktuellerIndex = (aktuellerIndex - 1 + photocard.length) % photocard.length;
-    photocard[aktuellerIndex].classList.add('aktiv');
+    photocard[aktuellerIndex].classList.add('active');
 }
 
 
 document.addEventListener('keydown', enertoopen);
 
-function enertoopen (event) { 
-const aktuelleKarte = document.querySelector('.foto-karte.aktiv');
+function enertoopen (event) {
+const aktuelleKarte = document.querySelector('.photo-card.active');
 if (event.key === 'Enter') {
     openOverlay(Array.from(photocard).indexOf(aktuelleKarte));
 }
@@ -135,7 +134,6 @@ if (event.key === 'Escape') {
     schliesseOverlay();
 }
 }
-
 
 
 

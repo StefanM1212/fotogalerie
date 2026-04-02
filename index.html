@@ -10,31 +10,31 @@
 </head>
 <body>
 
-  <header class="kopfbereich">
-    <h1 class="hauptueberschrift">Fotogalerie</h1>
-    <p class="untertitel">Eine Auswahl von 12 Aufnahmen</p>
+  <header class="page-header">
+    <h1 class="main-heading">Fotogalerie</h1>
+    <p class="subtitle">Eine Auswahl von 12 Aufnahmen</p>
   </header>
 
-  <main class="hauptinhalt">
+  <main class="main-content">
 
-    <section class="fotos-bereich">
-        
-<ul class="fotos-reihe fotos-reihe-oben">
-  <li class="foto-karte foto-karte-0"><button class="foto-button"><img class="foto-bild" src="bild1.jpg" alt="Bild 1"></button></li>
-  <li class="foto-karte foto-karte-1"><button class="foto-button"><img class="foto-bild" src="Bild2.jpg" alt="Bild 2"></button></li>
-  <li class="foto-karte foto-karte-2"><button class="foto-button"><img class="foto-bild" src="Bild3.jpg" alt="Bild 3"></button></li>
-  <li class="foto-karte foto-karte-3"><button class="foto-button"><img class="foto-bild" src="Bild4.jpg" alt="Bild 4"></button></li>
-  <li class="foto-karte foto-karte-4"><button class="foto-button"><img class="foto-bild" src="Bild5.jpg" alt="Bild 5"></button></li>
-  <li class="foto-karte foto-karte-5"><button class="foto-button"><img class="foto-bild" src="Bild6.jpg" alt="Bild 6"></button></li>
-  <li class="foto-karte foto-karte-6"><button class="foto-button"><img class="foto-bild" src="Bild7.jpg" alt="Bild 7"></button></li>
+    <section class="photos-section">
+
+<ul class="photos-row photos-row-top">
+  <li class="photo-card photo-card-0"><button class="photo-button"><img class="photo-image" src="bild1.jpg" alt="Bild 1"></button></li>
+  <li class="photo-card photo-card-1"><button class="photo-button"><img class="photo-image" src="Bild2.jpg" alt="Bild 2"></button></li>
+  <li class="photo-card photo-card-2"><button class="photo-button"><img class="photo-image" src="Bild3.jpg" alt="Bild 3"></button></li>
+  <li class="photo-card photo-card-3"><button class="photo-button"><img class="photo-image" src="Bild4.jpg" alt="Bild 4"></button></li>
+  <li class="photo-card photo-card-4"><button class="photo-button"><img class="photo-image" src="Bild5.jpg" alt="Bild 5"></button></li>
+  <li class="photo-card photo-card-5"><button class="photo-button"><img class="photo-image" src="Bild6.jpg" alt="Bild 6"></button></li>
+  <li class="photo-card photo-card-6"><button class="photo-button"><img class="photo-image" src="Bild7.jpg" alt="Bild 7"></button></li>
 </ul>
 
-<ul class="fotos-reihe fotos-reihe-unten">
-  <li class="foto-karte foto-karte-7"><button class="foto-button"><img class="foto-bild" src="bild8.jpg" alt="Bild 8"></button></li>
-  <li class="foto-karte foto-karte-8"><button class="foto-button"><img class="foto-bild" src="Bild9.jpg" alt="Bild 9"></button></li>
-  <li class="foto-karte foto-karte-9"><button class="foto-button"><img class="foto-bild" src="Bild10.jpg" alt="Bild 10"></button></li>
-  <li class="foto-karte foto-karte-10"><button class="foto-button"><img class="foto-bild" src="Bild11.jpg" alt="Bild 11"></button></li>
-  <li class="foto-karte foto-karte-11"><button class="foto-button"><img class="foto-bild" src="Bild12.jpg" alt="Bild 12"></button></li>
+<ul class="photos-row photos-row-bottom">
+  <li class="photo-card photo-card-7"><button class="photo-button"><img class="photo-image" src="bild8.jpg" alt="Bild 8"></button></li>
+  <li class="photo-card photo-card-8"><button class="photo-button"><img class="photo-image" src="Bild9.jpg" alt="Bild 9"></button></li>
+  <li class="photo-card photo-card-9"><button class="photo-button"><img class="photo-image" src="Bild10.jpg" alt="Bild 10"></button></li>
+  <li class="photo-card photo-card-10"><button class="photo-button"><img class="photo-image" src="Bild11.jpg" alt="Bild 11"></button></li>
+  <li class="photo-card photo-card-11"><button class="photo-button"><img class="photo-image" src="Bild12.jpg" alt="Bild 12"></button></li>
 </ul>
 
 
@@ -42,22 +42,24 @@
 
   </main>
 
-  <footer class="fussbereich">
-    <p class="fuss-text">Fotogalerie &copy; 2026</p>
+  <footer class="page-footer">
+    <p class="footer-text">Fotogalerie &copy; 2026</p>
   </footer>
 
   <!-- Overlay / Lightbox -->
 <div class="overlay" id="overlay">
+  <div class="overlay-background"></div>        <!-- ← direkt im Overlay -->
+  <div class="overlay-close">&#10006;</div> <!-- ← direkt im Overlay -->
 
-    <div class="overlay-background"></div>
 
-    <img class="overlay-bild" id="overlay-bild" src="" alt="">
+  <div class="overlay-content">
+    <div class="nav-arrow-left">&#10094;</div>
+    <img class="overlay-image" id="overlay-bild" src="" alt="">
+    <div class="nav-arrow-right">&#10095;</div>
+  </div>
 
-   <div class="nav-pfeil-links">&#10094;</div>
-<div class="nav-pfeil-rechts">&#10095;</div>
 
-    <div class="overlay-schliessen">&#10006;</div>
-</div>
 
+</div>  <!-- ← nicht vergessen -->
 </body>
 </html>

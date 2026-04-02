@@ -17,10 +17,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
   background-color: #06171e;
   color: #c8dde6;
   font-family: Georgia, "Times New Roman", serif;
+}
+
+.main-container {
+  max-width: 1200px;
 }
 
 
@@ -28,7 +31,7 @@ body {
    Kopfbereich
    ===================== */
 
-.kopfbereich {
+.page-header {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -37,9 +40,9 @@ body {
   text-align: center;
   padding: 0 40px;
   height: 20vh;
-} 
+}
 
-.hauptueberschrift {
+.main-heading {
   font-size: 42px;
   font-weight: normal;
   letter-spacing: 8px;
@@ -49,7 +52,7 @@ body {
   margin-top: 300px;
 }
 
-.untertitel {
+.subtitle {
   font-size: 12px;
   letter-spacing: 3px;
   color: #4a7a8a;
@@ -61,7 +64,7 @@ body {
    Hauptinhalt
    ===================== */
 
-.hauptinhalt {
+.main-content {
   flex: 1;
   display: flex;
   align-items: center;
@@ -73,7 +76,7 @@ body {
    Fotos-Bereich
    ===================== */
 
-.fotos-bereich {
+.photos-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +90,7 @@ body {
    Foto-Reihen (ul)
    ===================== */
 
-.fotos-reihe {
+.photos-row {
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -99,16 +102,15 @@ body {
    Foto-Karte (li) & Button & Bild
    ===================== */
 
-.foto-karte {
+.photo-card {
   width: 12vw;
   height: 12vw;
   border-radius: 30px;
   border: 4px solid #230056;
-  overflow: hidden;
   flex-shrink: 0;
 }
 
-.foto-button {
+.photo-button {
   background: none;  /* ← Browser-Styles weg */
   border: none;
   padding: 0;
@@ -118,19 +120,18 @@ body {
   display: block;
 }
 
-.foto-bild {
+.photo-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   cursor: pointer;
+  border-radius: 26px; /* etwas kleiner als Karte (30px - 4px Border) */
 }
 
-.foto-karte.aktiv {
+.photo-card.active {
   border: #ffffff 4px solid;
 }
-
-
 
 
 
@@ -140,7 +141,7 @@ body {
    ===================== */
 
 @media (max-width: 1499px) {
-  .foto-karte {
+  .photo-card {
     width: calc((100vw - 160px) / 7);
     height: calc((100vw - 160px) / 7);
   }
@@ -157,29 +158,29 @@ body {
     min-height: 100vh;
     overflow-y: auto;
   }
-  .hauptinhalt {
+  .main-content {
     align-items: flex-start;
     padding: 20px 0 40px;
   }
-  .fotos-bereich {
+  .photos-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     padding: 0 24px;
   }
-  .fotos-reihe {
+  .photos-row {
     display: contents;
   }
-  .foto-karte {
+  .photo-card {
     width: 100%;
     height: auto;
     aspect-ratio: 1;
     border-radius: 24px;
   }
-  .kopfbereich {
+  .page-header {
     margin-bottom: 100px;
   }
-  .hauptueberschrift {
+  .main-heading {
     font-size: 30px;
     letter-spacing: 8px;
   }
@@ -192,19 +193,19 @@ body {
    ===================== */
 
 @media (max-width: 899px) {
-  .kopfbereich {
+  .page-header {
     padding: 32px 24px 16px;
   }
-  .hauptueberschrift {
+  .main-heading {
     font-size: 22px;
     letter-spacing: 4px;
   }
-  .fotos-bereich {
+  .photos-section {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     padding: 0 16px;
   }
-  .foto-karte {
+  .photo-card {
     border-radius: 20px;
   }
 }
@@ -215,32 +216,31 @@ body {
    ===================== */
 
 @media (max-width: 599px) {
-  .kopfbereich {
+  .page-header {
     padding: 24px 16px 12px;
   }
-  .hauptueberschrift {
+  .main-heading {
     font-size: 18px;
     letter-spacing: 3px;
   }
-  .untertitel {
+  .subtitle {
     font-size: 10px;
   }
-  .fotos-bereich {
+  .photos-section {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding: 0 12px;
   }
-  .foto-karte {
+  .photo-card {
     border-radius: 16px;
     border-width: 3px;
   }
 }
 
 @media (max-width: 400px) {
-  .hauptueberschrift {
+  .main-heading {
     font-size: 25px;
     letter-spacing: 8px;
-    margin-bottom: 200px;
   }
 }
 
@@ -263,14 +263,22 @@ body {
   transition: opacity 0.5s ease-in-out;
 }
 
-.overlay.aktiv {
+.overlay-content {
+  position: relative;   /* ← damit absolute-Kinder sich daran orientieren */        /* ← hier bestimmst du wie breit die Zone ist */
+  max-width: 1500px;    /* ← und hier die Obergrenze */
+  display: flex;
+  justify-content: center;
+ gap: 30px;         /* ← damit die Bilder nicht direkt am Rand kleben */
+}
+
+.overlay.active {
   opacity: 1;
   pointer-events: auto;
 }
 
 
-.overlay-bild {
-  max-width: 88vw;
+.overlay-image {
+  max-width: 70vw;
   max-height: 88vh;
   border-radius: 30px;
   border: 4px solid #124658;
@@ -280,11 +288,11 @@ body {
   transition: transform 0.4s ease-in-out;
 }
 
-.overlay.aktiv .overlay-bild {
+.overlay.active .overlay-image {
   transform: scale(1);
 }
 
-.overlay-schliessen {
+.overlay-close {
   position: absolute;
   top: 24px;
   right: 32px;
@@ -305,41 +313,45 @@ body {
    Navigationspfeile
    ===================== */
 
-.nav-pfeil-links,
-.nav-pfeil-rechts {
+
+.nav-arrow-left,
+.nav-arrow-right {
   position: absolute;
-  top: 50%;
+top: 50%;
   transform: translateY(-50%);
   font-size: 60px;
   color: rgba(200, 221, 230, 0.5);
   cursor: pointer;
-  padding: 80px;
   user-select: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1010;
+
+
+
 }
 
-.nav-pfeil-links:hover,
-.nav-pfeil-rechts:hover, 
-  .nav-pfeil-links.pressed,
-  .nav-pfeil-rechts.pressed {
+
+.nav-arrow-left:hover,
+.nav-arrow-right:hover,
+  .nav-arrow-left.pressed,
+  .nav-arrow-right.pressed {
   color: #ffffff;
   transform: translateY(-50%) scale(1.3);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 
-.nav-pfeil-links {
-  left: 10px;
+.nav-arrow-left {
+  left: -80px;
 }
 
-.nav-pfeil-rechts {
-  right: 10px;
+.nav-arrow-right {
+  right: -80px;
 }
 
 @media (max-width: 600px) {
-  .nav-pfeil-links,
-  .nav-pfeil-rechts {
+  .nav-arrow-left,
+  .nav-arrow-right {
     font-size: 40px;
     padding: 20px;
   }
@@ -350,16 +362,16 @@ body {
    Fussbereich
    ===================== */
 
-.fussbereich {
+.page-footer {
   flex-shrink: 0;
   text-align: center;
   padding: 16px 40px;
 }
 
-.fuss-text {
+.footer-text {
   font-size: 11px;
   letter-spacing: 2px;
-  color: #2a5060;
+  color: #bababa;
   text-transform: uppercase;
 }
 
